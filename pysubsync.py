@@ -158,9 +158,19 @@ def _idx2ms(filename_in, isub):
 def subsync(filename_in, bmark0, bmark1=None,  d_subno=0, \
                                           filename_out=None, path=None):
     """
-    Takes a file .srt of subtitles (filename_in) and changes the 
-    chronology and/or re-numers the subtitles, producing a new file 
-    (filename_out).
+    This python script takes a file .srt of subtitles and changes the 
+    chronology and/or re-numbers the subtitles, in order to synchronize
+    the subtitles. The user is expected to provide, in addition to the
+    input file, one or two bookmarks. If only one bookmark is given, the
+    subtitles are either all shifted of "hh:mm:ss,mms" (absolute shift),
+    if the bookmark has the form "hh:mm:ss,mms", either they are shifted
+    in a way that the subtitle with number ID will be displayed at time
+    "hh:mm:ss,mms", if the bookmark has the form (ID, "hh:mm:ss,mms").
+    If the second bookmark is provided, it must have the form 
+    (ID2, "hh:mm:ss,mms2"). In this case, the subtitle with number ID2 
+    will be displayed at time "hh:mm:ss,mms2" and the timings of all the
+    other subtitles will be computed by means of a linear interpolation/
+    extrapolation after shifting the two bookmarked subtitles.
     
     
     Input arguments:
