@@ -13,16 +13,17 @@ will be displayed at time "hh:mm:ss,mms2" and the timings of all the
 other subtitles will be computed by means of a linear interpolation/
 extrapolation after shifting the two bookmarked subtitles.
 
+##call from python console:
 
 Input arguments:
 
 - filename_in  > input filename
 
-- bmark0       > tuple (num, "hh:mm:ss,mms") for the first bookmark
+- bmark0       > tuple (ID, "hh:mm:ss,mms") for the first bookmark
                  (absolute shift), or string "[-+]hh:mm:ss,mms" for
                  a relative shift.
 
-- bmark1       > tuple (num, "hh:mm:ss,mms") for the second bookmark
+- bmark1       > tuple (ID, "hh:mm:ss,mms") for the second bookmark
                  (absolute shift) [optional]
 
 - d_subno      > increment to subtitle numbers [optional, default:0]
@@ -32,26 +33,54 @@ Input arguments:
 
 - path         > working directory
     
-    
-Examples of Usage:
 
-    $ subsync("file.srt", "00:01:10,512")
+##call from bash:
+
+    $ ./pysubsync.py -i filename_in -s0 ID -t0 "hh:mm:ss,mms" -s1 ID2 -t1 "hh:mm:ss,mms2" -d d_subno -o filename_out -p path
+    
+##Examples of Usage:
+
+bash:
+
+    $ ./pysubsync.py -i "file.srt" -t0 "00:01:10,512"
+
+or, python console:
+
+    >>> subsync("file.srt", "00:01:10,512")
     
 Shifts all the subtitles forward in time of 00:01:10,512
 (relative shift). The output file is named "file.subsync.srt".
 
-    $ subsync("file.srt", "-5:10")
+bash:
+
+    $ ./pysubsync.py -i "file.srt" -t0 "-5:10"
+    
+or, python console:
+
+    >>> subsync("file.srt", "-5:10")
     
 Shifts all the subtitles backwards in time of 00:05:10,000
 (relative shift). The output file is named "file.subsync.srt".
-        
-    $subsync("file.srt", (10, "20:00,1") )
+    
+bash:
+    
+    $ ./pysubsync.py -i  "file.srt" -s0 10 -t0 "20:00,1"
+    
+or, python console:
+
+    >>> subsync("file.srt", (10, "20:00,1") )
     
 Shifts all the subtitles such that the subtitle with number 10
 appears at time 00:20:00,100 (absolute shift). The output file 
 is named "file.subsync.srt".
         
-    $ subsync("file.srt", (1, "1:11"), (1000, "1:59:59"))
+bash:
+
+    $ ./pysubsync.py -i "file.srt" -s0 1 -t0 "1:11" -s1 1000 -t1 "1:59:59"
+    
+or, python console:
+
+    >>> subsync("file.srt", (1, "1:11"), (1000, "1:59:59"))
     
 Shifts all the subtitles such that the subtitle with number 1
 appears at time 00:01:11,000 and the subtitle with number 1000 
@@ -61,7 +90,13 @@ means of a linear interpolation/extrapolation. The output file
 is called "file.subsync.srt". Both the input file and the output
 file are found in the current path.
         
-    $ subsync("file.srt", (10, "3:00"), (900, "1:15:00"), d_subno=100, "newfile.srt", path="/media/videos")
+bash:
+
+    $ ./pysubsync.py -i "file.srt" -s0 10 -t0 "3:00" -s1 900 -t1 "1:15:00" -d 100 -o "newfile.srt" -p /media/videos
+    
+or, python console:
+
+    >>> subsync("file.srt", (10, "3:00"), (900, "1:15:00"), d_subno=100, "newfile.srt", path="/media/videos")
     
 Shifts all the subtitles such that the subtitle with number 10
 appears at time 00:03:00,000 and the subtitle with number 900 
@@ -74,5 +109,5 @@ multiple files that should be merged in a single file). The
 output file is called "newfile.srt". Both the input file and the
 output file are found in the /media/videos.
 
-by Undy, September 20, 2015 (v.1.0) 
-         November 2/3, 2015 (v.2.0)   
+    by Undy, September 20, 2015 (v.1.0) 
+    November 2/3, 2015 (v.2.0)   
