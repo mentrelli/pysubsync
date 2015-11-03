@@ -40,6 +40,8 @@ Input arguments:
     
 ##Examples of Usage:
 
+###Example 1
+
 bash:
 
     $ ./pysubsync.py -i "file.srt" -t0 "00:01:10,512"
@@ -50,6 +52,8 @@ or, python console:
     
 Shifts all the subtitles forward in time of 00:01:10,512
 (relative shift). The output file is named "file.subsync.srt".
+
+###Example 2
 
 bash:
 
@@ -62,6 +66,8 @@ or, python console:
 Shifts all the subtitles backwards in time of 00:05:10,000
 (relative shift). The output file is named "file.subsync.srt".
     
+###Example 3
+
 bash:
     
     $ ./pysubsync.py -i  "file.srt" -s0 10 -t0 "20:00,1"
@@ -73,7 +79,9 @@ or, python console:
 Shifts all the subtitles such that the subtitle with number 10
 appears at time 00:20:00,100 (absolute shift). The output file 
 is named "file.subsync.srt".
-        
+   
+###Example 4
+
 bash:
 
     $ ./pysubsync.py -i "file.srt" -s0 1 -t0 "1:11" -s1 1000 -t1 "1:59:59"
@@ -89,7 +97,9 @@ which all the other subtitles are displayed are computed by
 means of a linear interpolation/extrapolation. The output file 
 is called "file.subsync.srt". Both the input file and the output
 file are found in the current path.
-        
+
+###Example 5
+
 bash:
 
     $ ./pysubsync.py -i "file.srt" -s0 10 -t0 "3:00" -s1 900 -t1 "1:15:00" -d 100 -o "newfile.srt" -p /media/videos
@@ -109,5 +119,5 @@ multiple files that should be merged in a single file). The
 output file is called "newfile.srt". Both the input file and the
 output file are found in the /media/videos.
 
-    by Undy, September 20, 2015 (v.1.0) 
-    November 2/3, 2015 (v.2.0)   
+
+--- by Undy, September 20, 2015 (v.1.0); November 2/3, 2015 (v.2.0)   
