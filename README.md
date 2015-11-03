@@ -55,24 +55,24 @@ is named "file.subsync.srt".
     
 Shifts all the subtitles such that the subtitle with number 1
 appears at time 00:01:11,000 and the subtitle with number 1000 
-appears at time 01:59:59,000 (absolute shifts). The subtitles 
-are shifted on the basis of a linear interpolation/extrapolation
-between the two provided bookmarks. The output file is called 
-"file.subsync.srt". Both the input file and the output file are 
-found in the current path.
+appears at time 01:59:59,000 (absolute shifts). The times at 
+which all the other subtitles are displayed are computed by 
+means of a linear interpolation/extrapolation. The output file 
+is called "file.subsync.srt". Both the input file and the output
+file are found in the current path.
         
     $ subsync("file.srt", (10, "3:00"), (900, "1:15:00"), d_subno=100, "newfile.srt", path="/media/videos")
     
 Shifts all the subtitles such that the subtitle with number 10
 appears at time 00:03:00,000 and the subtitle with number 900 
-appears at time 01:15:00,000 (absolute shifts). The subtitles 
-are shifted on the basis of a linear interpolation/extrapolation
-between the two provided bookmarks. In addition to the shifts,
-the numbering of the subtitles is increased by 100 (this feature
-might be useful in case of subtitles split in multiple files
-that should be merged in a single file). The output file is 
-called "newfile.srt". Both the input file and the output file 
-are found in the /media/videos.
+appears at time 01:15:00,000 (absolute shifts). The times at 
+which all the other subtitles are displayed are computed by 
+means of a linear interpolation/extrapolation. In addition to the
+shifts, the numbering of the subtitles is increased by 100 
+(this feature might be useful in case of subtitles split in 
+multiple files that should be merged in a single file). The 
+output file is called "newfile.srt". Both the input file and the
+output file are found in the /media/videos.
 
 by Undy, September 20, 2015 (v.1.0) 
          November 2/3, 2015 (v.2.0)   
